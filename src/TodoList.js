@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import TodoItem from './TodoListItem.js'
 import './style.css'
 class TodoList extends Component {
   constructor(props){
@@ -9,25 +10,42 @@ class TodoList extends Component {
     };
     this.onClickButton = this.onClickButton.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
   onClickButton(){
-    this.setState({
-      list: [...this.state.list, this.state.inputValue],
+    // 借助于prevState
+    this.setState((prevState) => ({
+      list: [...prevState.list, prevState.inputValue],
       inputValue: ''
-    });
+    }));
   }
   handleChange(e){
-    this.setState({
-      inputValue: e.target.value
-    });
+    // 之前的做法，可以理解为同步
+    // this.setState({
+    //   inputValue: e.target.value
+    // });
+    // 更推荐的做法，使用异步来解决
+    const value = e.target.value;
+    this.setState(() => ({
+      inputValue: value
+    }))
   }
   deleteItem(index){
     // immutable
     // state 不允许做任何改变
-    const list = [...this.state.list]
-    list.splice(index, 1)
-    this.setState({
-      list: list
+    this.setState((prevState) => {
+      const list = [...prevState.list]
+      list.splice(index, 1)
+      return {
+        list
+      }
+    })
+  }
+  getTodoItem(){
+    return this.state.list.map((item,index) => {
+      return (
+        <TodoItem content={item} index={index} deleteItem={this.deleteItem} key={index}/>
+      )
     })
   }
   render() {
@@ -43,12 +61,10 @@ class TodoList extends Component {
           <button type="button" onClick={this.onClickButton}>提交</button>
         </div>
         <ul>
-          {/* 禁止标签转义的写法 return <li key={index} onClick={this.deleteItem.bind(this,index)} dangerouslySetInnerHTML={{__html: item}}></li>*/}
-          {
-            this.state.list.map((item,index) => {
-              return <li key={index} onClick={this.deleteItem.bind(this,index)}>{item}</li>
-            })
-          }
+          {/*禁止标签转义的写法 return <li key={index} onClick={this.deleteItem.bind(this,index)} dangerouslySetInnerHTML={{__html: item}}></li>*/}
+          {/*通过组件的方式引入*/}
+          {/*<li key={index} onClick={this.deleteItem.bind(this,index)}>{item}</li>*/}
+          {this.getTodoItem()}
         </ul>
       </Fragment>
     );

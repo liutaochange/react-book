@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoListItem.js'
+import Test from './Test.js'
 import './style.css'
 class TodoList extends Component {
   constructor(props){
+    // 当组件的props和state发生改变时，render函数就会重新执行
     super(props)
     this.state = {
       list: ["学英语","学react"],
@@ -66,6 +68,7 @@ class TodoList extends Component {
           {/*<li key={index} onClick={this.deleteItem.bind(this,index)}>{item}</li>*/}
           {this.getTodoItem()}
         </ul>
+        <Test content={this.state.inputValue}/>
       </Fragment>
     );
   }

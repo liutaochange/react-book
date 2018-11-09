@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoListItem.js'
+import App from './App.js'
 import axios from 'axios'
 import './style.css'
 class TodoList extends Component {
@@ -82,6 +83,8 @@ class TodoList extends Component {
           {/*<li key={item} onClick={this.deleteItem.bind(this,index)}>{item}</li>*/}
           {this.getTodoItem()}
         </ul>
+        <br />
+        <App />
       </Fragment>
     );
   }

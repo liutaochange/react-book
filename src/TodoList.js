@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoListItem.js'
+import axios from 'axios'
 import './style.css'
 class TodoList extends Component {
   constructor(props){
     super(props)
     this.state = {
-      list: ["学英语","学react"],
+      list: [],
       inputValue: 'hello'
     };
     this.onClickButton = this.onClickButton.bind(this);
@@ -42,12 +43,26 @@ class TodoList extends Component {
     })
   }
   getTodoItem(){
-    {/* 注意： 此场景涉及增加和删除元素，所以key值不能使用index */}
+    /* 注意： 此场景涉及增加和删除元素，所以key值不能使用index */
     return this.state.list.map((item,index) => {
       return (
         <TodoItem content={item} index={index} deleteItem={this.deleteItem} key={item}/>
       )
     })
+  }
+  // 组件挂载完成，可以在此时发送ajax请求
+  componentDidMount(){
+    axios.get('http://localhost:5566/api/todolist')
+      .then((res) => {
+        if (res.data.code === 1) {
+          this.setState(() => ({
+              list: [...res.data.data]
+          }))
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
   render() {
     return (

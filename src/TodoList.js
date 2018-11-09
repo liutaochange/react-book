@@ -42,9 +42,10 @@ class TodoList extends Component {
     })
   }
   getTodoItem(){
+    {/* 注意： 此场景涉及增加和删除元素，所以key值不能使用index */}
     return this.state.list.map((item,index) => {
       return (
-        <TodoItem content={item} index={index} deleteItem={this.deleteItem} key={index}/>
+        <TodoItem content={item} index={index} deleteItem={this.deleteItem} key={item}/>
       )
     })
   }
@@ -61,9 +62,9 @@ class TodoList extends Component {
           <button type="button" onClick={this.onClickButton}>提交</button>
         </div>
         <ul>
-          {/*禁止标签转义的写法 return <li key={index} onClick={this.deleteItem.bind(this,index)} dangerouslySetInnerHTML={{__html: item}}></li>*/}
+          {/*禁止标签转义的写法 return <li key={item} onClick={this.deleteItem.bind(this,index)} dangerouslySetInnerHTML={{__html: item}}></li>*/}
           {/*通过组件的方式引入*/}
-          {/*<li key={index} onClick={this.deleteItem.bind(this,index)}>{item}</li>*/}
+          {/*<li key={item} onClick={this.deleteItem.bind(this,index)}>{item}</li>*/}
           {this.getTodoItem()}
         </ul>
       </Fragment>

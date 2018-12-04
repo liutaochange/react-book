@@ -12,7 +12,7 @@ import { createStore } from 'redux';
 import reducer from './reducer.js';
 
 // 创建 Redux store 来存放应用的状态。
-// API 是 { subscribe, dispatch, getState }。
+// API 是 { subscribe, dispatch, getState }。 订阅store的改变/派发action/获取store的值
 const Store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

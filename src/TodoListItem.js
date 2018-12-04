@@ -9,7 +9,7 @@ class TodoItem extends Component {
     const { deleteItem, index } = this.props;
     deleteItem(index);
   }
-  shouldComponentUpdate(nextProps,nextState){
+  shouldComponentUpdate(nextProps){
     if (nextProps.content !== this.props.content) {
       return true;
     }else{

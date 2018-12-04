@@ -1,4 +1,4 @@
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionType.js'
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_DATA_STORE } from './actionType.js'
 const defaultReducer = {
   inputValue: 'hello redux',
   list: [1, 2, 3]
@@ -17,6 +17,9 @@ export default (state = defaultReducer, action) => {
     return newState
   } else if (action.type === DELETE_TODO_ITEM) {
     newState.list.splice(action.index, 1)
+    return newState
+  } else if (action.type === INIT_DATA_STORE) {
+    newState.list = action.data
     return newState
   }
   return state

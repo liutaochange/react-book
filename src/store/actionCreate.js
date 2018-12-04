@@ -1,4 +1,4 @@
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionType.js'
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_DATA_STORE } from './actionType.js'
 // 根据定义的type值封装函数，直接生成对应的action
 export const getInputChangeAction = (value) => ({
   type: CHANGE_INPUT_VALUE,
@@ -10,4 +10,8 @@ export const getAddItemAction = () => ({
 export const getDeleteItemAction = (index) => ({
   type: DELETE_TODO_ITEM,
   index
+})
+export const initDataAction = (data) => ({
+  type: INIT_DATA_STORE,
+  data
 })

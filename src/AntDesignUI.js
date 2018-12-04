@@ -18,7 +18,7 @@ class AntDesignUI extends Component {
           style={{ marginTop: '20px', width: '500px' }}
           bordered
           dataSource={this.props.list}
-          renderItem={(item, index) => (<List.Item onClick={(index) => { this.props.handleClickDelete(index) }}>{item}</List.Item>)}
+          renderItem={(item, index) => (<List.Item onClick={() => { this.props.handleClickDelete(index) }}>{item}</List.Item>)}
         />
       </div>
     );

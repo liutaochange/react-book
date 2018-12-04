@@ -4,3 +4,5 @@ export const CHANGE_INPUT_VALUE = 'change_input_value'
 export const ADD_TODO_ITEM = 'add_todo_item'
 // 删除todo_item 的项
 export const DELETE_TODO_ITEM = 'delete_todo_item'
+// 初始化store的数据
+export const INIT_DATA_STORE = 'init_data_store'

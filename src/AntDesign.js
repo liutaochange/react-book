@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Store from './store/index.js';
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreate.js';
-import AntDesignUI from './AntDesignUI.js'
+import axios from 'axios'
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction, initDataAction } from './store/actionCreate.js';
+// import AntDesignUI from './AntDesignUI.js'  // 引入一个ui组件
+import AntDesignUI from './NostatusCom.js' // 引入一个无状态组件
 class AntDesign extends Component {
   constructor(props) {
     super(props)
@@ -36,6 +38,14 @@ class AntDesign extends Component {
         handleClickDelete={this.handleClickDelete}
         list={this.state.list} />
     )
+  }
+  componentDidMount() {
+    axios.get('http://127.0.0.1:5566/').then((res) => {
+      const action = initDataAction(res.data.data)
+      Store.dispatch(action)
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 }
 export default AntDesign

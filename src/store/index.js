@@ -8,13 +8,21 @@
 // 1. 单一数据源
 // 2. State 是只读的
 // 3. 使用纯函数来执行修改 ( reducers)
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import reducer from './reducer.js';
+
+const composeEnhancers =
+  typeof window === 'object' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk)
+);
 
 // 创建 Redux store 来存放应用的状态。
 // API 是 { subscribe, dispatch, getState }。 订阅store的改变/派发action/获取store的值
-const Store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const Store = createStore(reducer, enhancer);
 export default Store;

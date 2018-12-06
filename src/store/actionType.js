@@ -6,3 +6,5 @@ export const ADD_TODO_ITEM = 'add_todo_item'
 export const DELETE_TODO_ITEM = 'delete_todo_item'
 // 初始化store的数据
 export const INIT_DATA_STORE = 'init_data_store'
+// 异步获取数据
+export const GET_INIT_LIST = 'get_init_list'

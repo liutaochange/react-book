@@ -9,9 +9,12 @@
 // 2. State 是只读的
 // 3. 使用纯函数来执行修改 ( reducers)
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import reducer from './reducer.js';
+import createSagaMiddleware from 'redux-saga';
+import TodoSaga from './sagas.js';
 
+const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers =
   typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
@@ -19,10 +22,11 @@ const composeEnhancers =
       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
     }) : compose;
 const enhancer = composeEnhancers(
-  applyMiddleware(thunk)
+  applyMiddleware(sagaMiddleware)
 );
 
 // 创建 Redux store 来存放应用的状态。
 // API 是 { subscribe, dispatch, getState }。 订阅store的改变/派发action/获取store的值
 const Store = createStore(reducer, enhancer);
+sagaMiddleware.run(TodoSaga);
 export default Store;

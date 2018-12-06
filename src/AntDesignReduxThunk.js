@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Store from './store/index.js';
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitList } from './store/actionCreate.js';
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getTodoList } from './store/actionCreateThunk.js';
 // import AntDesignUI from './AntDesignUI.js'  // 引入一个ui组件
 import AntDesignUI from './NostatusCom.js' // 引入一个无状态组件
 class AntDesign extends Component {
@@ -39,7 +39,7 @@ class AntDesign extends Component {
     )
   }
   componentDidMount() {
-    const action = getInitList()
+    const action = getTodoList()
     Store.dispatch(action)
   }
 }

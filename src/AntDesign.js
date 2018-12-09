@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Store from './store/index.js';
+import connet from 'react-redux';
 import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitList } from './store/actionCreate.js';
 // import AntDesignUI from './AntDesignUI.js'  // 引入一个ui组件
 import AntDesignUI from './NostatusCom.js' // 引入一个无状态组件
@@ -43,4 +44,4 @@ class AntDesign extends Component {
     Store.dispatch(action)
   }
 }
-export default AntDesign
+export default connet(null, null)(AntDesign)

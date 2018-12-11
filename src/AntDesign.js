@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Store from './store/index.js';
-import connet from 'react-redux';
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitList } from './store/actionCreate.js';
+import { connect } from 'react-redux';
+// import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitList } from './store/actionCreate.js';
 // import AntDesignUI from './AntDesignUI.js'  // 引入一个ui组件
 import AntDesignUI from './NostatusCom.js' // 引入一个无状态组件
 class AntDesign extends Component {
@@ -15,19 +15,19 @@ class AntDesign extends Component {
     Store.subscribe(this.handleStoreChange)
   }
   handleInputChange(e) {
-    const action = getInputChangeAction(e.target.value)
-    Store.dispatch(action)
+    // const action = getInputChangeAction(e.target.value)
+    // Store.dispatch(action)
   }
   handleStoreChange() {
     this.setState(Store.getState())
   }
   handleButtonClick() {
-    const action = getAddItemAction()
-    Store.dispatch(action)
+    // const action = getAddItemAction()
+    // Store.dispatch(action)
   }
   handleClickDelete(index) {
-    const action = getDeleteItemAction(index)
-    Store.dispatch(action)
+    // const action = getDeleteItemAction(index)
+    // Store.dispatch(action)
   }
   render() {
     return (
@@ -40,8 +40,22 @@ class AntDesign extends Component {
     )
   }
   componentDidMount() {
-    const action = getInitList()
-    Store.dispatch(action)
+    // const action = getInitList()
+    // Store.dispatch(action)
   }
 }
-export default connet(null, null)(AntDesign)
+const mapStateToProps = (state) =>  {
+  return { 
+    inputValue: state.inputValue,
+    list: state.list 
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(
+      Object.assign({}, todoActionCreators, counterActionCreators),
+      dispatch
+    )
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AntDesign)

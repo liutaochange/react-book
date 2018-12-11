@@ -1,7 +1,7 @@
-const defaultVlaue = {
+const defaultState = {
   inputValue: 'hello',
-  list: [1,2,3]
+  list: [1, 2, 3]
 }
-export default (state = defaultVlaue, action) => {
+export default (state = defaultState, action) => {
   return state
 }

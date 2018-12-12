@@ -4,13 +4,14 @@ import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './s
 import AntDesignUI from './NostatusCom.js' // 引入一个无状态组件
 class AntDesign extends Component {
   render() {
+    const { inputValue, handleInputChange, handleButtonClick, handleClickDelete, list } = this.props
     return (
       <AntDesignUI
-        inputValue={this.props.inputValue}
-        handleInputChange={this.props.handleInputChange}
-        handleButtonClick={this.props.handleButtonClick}
-        handleClickDelete={this.props.handleClickDelete}
-        list={this.props.list} />
+        inputValue={inputValue}
+        handleInputChange={handleInputChange}
+        handleButtonClick={handleButtonClick}
+        handleClickDelete={handleClickDelete}
+        list={list} />
     )
   }
 }

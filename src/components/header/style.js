@@ -55,9 +55,24 @@ export const SearchWamp = styled.div`
     line-height: 30px;
     border-radius: 15px;
     padding: 0;
-    color: #fff;
+    color: #999;
     text-align: center;
-    background: #969696;
+    &.focused{
+      color: #fff;
+      background: #969696;
+    }
+  }
+  .slider-enter{
+    transition: all .2s ease;
+  } 
+  .slider-enter-active{
+    width: 240px;
+  }  
+  .slider-exit{
+    transition: all .2s ease;
+  } 
+  .slider-exit-active{
+    width: 160px;
   }
 `
 
@@ -70,12 +85,16 @@ export const Navsearch = styled.input.attrs({
   border: none;
   outline: none;
   margin-top: 9px;
-  padding: 0 20px;
+  padding: 0 30px 0 20px;
   box-sizing: border-box;
   background: #eee;
   font-size: 15px;
+  color: #777;
   &::placeholder{
     color: #999;
+  }
+  &.focused{
+    width: 240px;
   }
 `
 

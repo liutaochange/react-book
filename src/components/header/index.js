@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HeaderWamp, Logo, Nav, NavItem, Navsearch, Addition, Button } from './style.js'
+import { HeaderWamp, Logo, Nav, NavItem, SearchWamp, Navsearch, Addition, Button } from './style.js'
 class Header extends Component {
   render() {
     return (
@@ -8,12 +8,20 @@ class Header extends Component {
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载App</NavItem>
-          <Navsearch />
+          <SearchWamp>
+            <Navsearch />
+            <i className="iconfont">&#xe60a;</i>
+          </SearchWamp>
           <NavItem className="right">登录</NavItem>
-          <NavItem className="right">Aa</NavItem>
+          <NavItem className="right">
+            <i className="iconfont">&#xe636;</i>
+          </NavItem>
         </Nav>
         <Addition>
-          <Button className="write">写文章</Button>
+          <Button className="write">
+            <i className="iconfont">&#xe603;</i>
+            写文章
+          </Button>
           <Button className="signUp">注册</Button>
         </Addition>
       </HeaderWamp>

@@ -1,26 +1,11 @@
 import React, { Component } from 'react';
 import { HeaderWamp, Logo, Nav, NavItem, SearchWamp, Navsearch, Addition, Button } from './style.js';
+import { getInputFocusAction, getInputBlurAction } from '../../store/actionCreate.js';
 import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
 class Header extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      focused: false
-    }
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-  }
-  handleFocus() {
-    this.setState(() => ({
-      focused: true
-    }))
-  }
-  handleBlur() {
-    this.setState(() => ({
-      focused: false
-    }))
-  }
   render() {
+    const {focused, handleFocus, handleBlur} = this.props
     return (
       <HeaderWamp>
         <Logo href='/' />
@@ -33,9 +18,9 @@ class Header extends Component {
               timeout={200}
               classNames="slider"
               >
-              <Navsearch className={this.state.focused ? 'focused' : ''} onFocus={this.handleFocus} onBlur={this.handleBlur}/>
+              <Navsearch className={focused ? 'focused' : ''} onFocus={handleFocus} onBlur={handleBlur}/>
             </CSSTransition>
-            <i className={this.state.focused ? 'iconfont focused' : 'iconfont'}>&#xe60a;</i>
+            <i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe60a;</i>
           </SearchWamp>
           <NavItem className="right">登录</NavItem>
           <NavItem className="right">
@@ -53,4 +38,21 @@ class Header extends Component {
     )
   }
 }
-export default Header;
+const mapStateToProps = (state) =>  {
+  return { 
+    focused: state.focused
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleFocus() {
+      const action = getInputFocusAction()
+      dispatch(action)
+    },
+    handleBlur() {
+      const action = getInputBlurAction()
+      dispatch(action)
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

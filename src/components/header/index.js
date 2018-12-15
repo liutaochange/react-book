@@ -16,7 +16,7 @@ import {
 import { actionCreate } from './store/index.js';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
-const getSearchList = (show) => {
+const getSearchList = (show, list) => {
   if (show) {
     return (
       <SearchInfo>
@@ -25,15 +25,11 @@ const getSearchList = (show) => {
           <SearchInfoSwitch>换一批</SearchInfoSwitch>
         </SearchInfoTitle>
         <div>
-          <SearchInfoItem>教育</SearchInfoItem>
-          <SearchInfoItem>教育</SearchInfoItem>
-          <SearchInfoItem>教育</SearchInfoItem>
-          <SearchInfoItem>教育</SearchInfoItem>
-          <SearchInfoItem>教育</SearchInfoItem>
-          <SearchInfoItem>教育</SearchInfoItem>
-          <SearchInfoItem>教育</SearchInfoItem>
-          <SearchInfoItem>教育</SearchInfoItem>
-          <SearchInfoItem>教育</SearchInfoItem>
+          {
+            list.map((item) => {
+              return <SearchInfoItem key={item}>{item}</SearchInfoItem>
+            })
+          }
         </div>
       </SearchInfo>
     )
@@ -42,7 +38,7 @@ const getSearchList = (show) => {
   }
 }
 const Header = (props) => {
-  const {focused, handleFocus, handleBlur} = props
+  const {focused, list, handleFocus, handleBlur} = props
   return (
     <HeaderWamp>
       <Logo href='/' />
@@ -58,7 +54,7 @@ const Header = (props) => {
             <Navsearch className={focused ? 'focused' : ''} onFocus={handleFocus} onBlur={handleBlur}/>
           </CSSTransition>
           <i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe60a;</i>
-          {getSearchList(focused)}
+          {getSearchList(focused, list)}
         </SearchWamp>
         <NavItem className="right">登录</NavItem>
         <NavItem className="right">
@@ -78,7 +74,8 @@ const Header = (props) => {
 const mapStateToProps = (state) =>  {
   return { 
     // focused: state.get('header').get('focused')
-    focused: state.getIn(['header', 'focused'])
+    focused: state.getIn(['header', 'focused']),
+    list: state.getIn(['header', 'list'])
   }
 }
 const mapDispatchToProps = (dispatch) => {

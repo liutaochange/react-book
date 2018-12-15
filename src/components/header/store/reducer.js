@@ -3,7 +3,10 @@ import { fromJS  } from 'immutable';
 
 const defaultState = fromJS ({
   focused: false,
-  list: []
+  mouseIn: false,
+  list: [],
+  page: 1,
+  totalPage: 1
 })
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -12,7 +15,11 @@ export default (state = defaultState, action) => {
     case actionType.GETINPUTBLUR:
       return state.set('focused', false)
     case actionType.GETSEARCHLIST:
-      return state.set('list', action.list)
+      return state.set('list', action.list).set('totalPage', action.totalPage)
+    case actionType.GETMOUSEENTER:
+      return state.set('mouseIn', true)
+    case actionType.GETMOUSELEAVE:
+      return state.set('mouseIn', false)
     default: 
       return state
   }

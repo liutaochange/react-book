@@ -16,20 +16,23 @@ import {
 import { actionCreate } from './store/index.js';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
-const getSearchList = (show, list) => {
-  if (show) {
+const getSearchList = (show, mouseIn, list, page, handleMouse, handleMouseLeave) => {
+  const jsList = list.toJS()
+  const pageList = []
+  for (let i = (page - 1) * 10; i < page * 10; i ++) {
+    pageList.push(jsList[i])
+  }
+  if (show || mouseIn) {
     return (
-      <SearchInfo>
+      <SearchInfo onMouseEnter={handleMouse} onMouseLeave={handleMouseLeave}>
         <SearchInfoTitle>
           热门搜索
           <SearchInfoSwitch>换一批</SearchInfoSwitch>
         </SearchInfoTitle>
         <div>
-          {
-            list.map((item) => {
-              return <SearchInfoItem key={item}>{item}</SearchInfoItem>
-            })
-          }
+          {pageList.map((item) => {
+            return (<SearchInfoItem key={item}>{item}</SearchInfoItem>)
+          })}
         </div>
       </SearchInfo>
     )
@@ -38,7 +41,7 @@ const getSearchList = (show, list) => {
   }
 }
 const Header = (props) => {
-  const {focused, list, handleFocus, handleBlur} = props
+  const {focused, mouseIn, list, page, handleFocus, handleBlur, handleMouse, handleMouseLeave} = props
   return (
     <HeaderWamp>
       <Logo href='/' />
@@ -54,7 +57,7 @@ const Header = (props) => {
             <Navsearch className={focused ? 'focused' : ''} onFocus={handleFocus} onBlur={handleBlur}/>
           </CSSTransition>
           <i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe60a;</i>
-          {getSearchList(focused, list)}
+          {getSearchList(focused, mouseIn, list, page, handleMouse, handleMouseLeave)}
         </SearchWamp>
         <NavItem className="right">登录</NavItem>
         <NavItem className="right">
@@ -75,7 +78,10 @@ const mapStateToProps = (state) =>  {
   return { 
     // focused: state.get('header').get('focused')
     focused: state.getIn(['header', 'focused']),
-    list: state.getIn(['header', 'list'])
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    list: state.getIn(['header', 'list']),
+    page: state.getIn(['header', 'page']),
+    totalPage: state.getIn(['header', 'totalPage']),
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -86,6 +92,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleBlur() {
       dispatch(actionCreate.getInputBlurAction())
+    },
+    handleMouse() {
+      dispatch(actionCreate.getMouseEnterAction())
+    },
+    handleMouseLeave() {
+      dispatch(actionCreate.getMouseLeaveAction())
     }
   }
 }

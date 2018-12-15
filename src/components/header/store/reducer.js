@@ -2,7 +2,8 @@ import * as actionType from './actionType.js';
 import { fromJS  } from 'immutable';
 
 const defaultState = fromJS ({
-  focused: false
+  focused: false,
+  list: []
 })
 export default (state = defaultState, action) => {
   if (action.type === actionType.GETINPUTFOCUS) {

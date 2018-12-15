@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeaderWamp, Logo, Nav, NavItem, SearchWamp, Navsearch, Addition, Button } from './style.js';
-import { getInputFocusAction, getInputBlurAction } from '../../store/actionCreate.js';
+import { actionCreate } from './store/index.js';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 const Header = (props) => {
@@ -38,18 +38,17 @@ const Header = (props) => {
 }
 const mapStateToProps = (state) =>  {
   return { 
-    focused: state.focused
+    // focused: state.get('header').get('focused')
+    focused: state.getIn(['header', 'focused'])
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     handleFocus() {
-      const action = getInputFocusAction()
-      dispatch(action)
+      dispatch(actionCreate.getInputFocusAction())
     },
     handleBlur() {
-      const action = getInputBlurAction()
-      dispatch(action)
+      dispatch(actionCreate.getInputBlurAction())
     }
   }
 }

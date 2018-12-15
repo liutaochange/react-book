@@ -14,7 +14,7 @@ class Header extends Component {
           <NavItem className="left">下载App</NavItem>
           <SearchWamp>
             <CSSTransition
-              in={this.state.focused}
+              in={focused}
               timeout={200}
               classNames="slider"
               >

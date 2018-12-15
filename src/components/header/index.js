@@ -1,8 +1,46 @@
 import React from 'react';
-import { HeaderWamp, Logo, Nav, NavItem, SearchWamp, Navsearch, Addition, Button } from './style.js';
+import { 
+  HeaderWamp, 
+  Logo, 
+  Nav, 
+  NavItem, 
+  SearchWamp, 
+  Navsearch, 
+  SearchInfo, 
+  SearchInfoTitle, 
+  SearchInfoSwitch,
+  SearchInfoItem,
+  Addition, 
+  Button
+} from './style.js';
 import { actionCreate } from './store/index.js';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
+const getSearchList = (show) => {
+  if (show) {
+    return (
+      <SearchInfo>
+        <SearchInfoTitle>
+          热门搜索
+          <SearchInfoSwitch>换一批</SearchInfoSwitch>
+        </SearchInfoTitle>
+        <div>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+        </div>
+      </SearchInfo>
+    )
+  }else {
+    return null
+  }
+}
 const Header = (props) => {
   const {focused, handleFocus, handleBlur} = props
   return (
@@ -20,6 +58,7 @@ const Header = (props) => {
             <Navsearch className={focused ? 'focused' : ''} onFocus={handleFocus} onBlur={handleBlur}/>
           </CSSTransition>
           <i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe60a;</i>
+          {getSearchList(focused)}
         </SearchWamp>
         <NavItem className="right">登录</NavItem>
         <NavItem className="right">

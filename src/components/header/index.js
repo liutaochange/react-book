@@ -57,7 +57,7 @@ class Header extends Component {
               timeout={200}
               classNames="slider"
               >
-              <Navsearch className={focused ? 'focused' : ''} onFocus={handleFocus} onBlur={handleBlur}/>
+              <Navsearch className={focused ? 'focused' : ''} onFocus={() => handleFocus(list)} onBlur={handleBlur}/>
             </CSSTransition>
             <i className={focused ? 'iconfont search focused' : 'search iconfont'}>&#xe60a;</i>
             {searchList}
@@ -90,8 +90,10 @@ const mapStateToProps = (state) =>  {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleFocus() {
-      dispatch(actionCreate.getSearchAction())
+    handleFocus(list) {
+      if (list.size === 0) {
+        dispatch(actionCreate.getSearchAction())
+      }
       dispatch(actionCreate.getInputFocusAction())
     },
     handleBlur() {

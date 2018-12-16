@@ -15,11 +15,16 @@ export default (state = defaultState, action) => {
     case actionType.GETINPUTBLUR:
       return state.set('focused', false)
     case actionType.GETSEARCHLIST:
-      return state.set('list', action.list).set('totalPage', action.totalPage)
+      return state.merge({
+        list: action.list,
+        totalPage: action.totalPage
+      })
     case actionType.GETMOUSEENTER:
       return state.set('mouseIn', true)
     case actionType.GETMOUSELEAVE:
       return state.set('mouseIn', false)
+    case actionType.GETCHANGEPAGE:
+      return state.set('page', action.page)
     default: 
       return state
   }

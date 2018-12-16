@@ -18,6 +18,10 @@ export const getMouseEnterAction = () => ({
 export const getMouseLeaveAction = () => ({
   type: actionType.GETMOUSELEAVE
 })
+export const getChangePageAction = (page) => ({
+  type: actionType.GETCHANGEPAGE,
+  page
+})
 export const getSearchAction = () => {
   return (dispatch) => {
     getSearchList().then((res) => {

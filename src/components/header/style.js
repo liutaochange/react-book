@@ -46,7 +46,7 @@ export const NavItem = styled.div`
 export const SearchWamp = styled.div`
   float: left;
   position: relative;
-  .iconfont{
+  .search{
     position: absolute;
     top: 13px;
     right: 5px;
@@ -80,6 +80,14 @@ export const SearchInfoTitle = styled.div`
   line-height: 20px;
   font-size: 14px;
   color: #969696;
+  .refresh{
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 5px;
+    color: #969696;
+    transition: all .3s ease-in;
+    transform-origin: center;
+  }
 `
 
 export const SearchInfoSwitch = styled.span`

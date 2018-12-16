@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { GlobalStyle } from './style.js'
 import { GlobalIcon } from './assets/iconfont/iconfont.js'
+import { BrowserRouter, Route } from "react-router-dom";
 import Header from './components/header/index.js'
 
 class App extends Component {
@@ -10,6 +11,12 @@ class App extends Component {
         <GlobalStyle />
         <GlobalIcon />
         <Header />
+        <BrowserRouter>
+          <div>
+            <Route path='/' exact render={() => <div>home</div>}></Route>
+            <Route path='/detail' exact render={() => <div>detail</div>}></Route>
+          </div>
+        </BrowserRouter>
       </Fragment>
     );
   }

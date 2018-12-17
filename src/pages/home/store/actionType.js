@@ -1,0 +1,1 @@
+export const GETTOPICLIST = 'get_topic_list'

@@ -5,5 +5,8 @@ const request = axios.create({
   withCredentials: true
 })
 
-// 获取首页数据
+// 获取首页header 搜索推荐数据
 export const getSearchList = () => request.get('/searchList.json')
+
+// 获取首页header topic列表数据
+export const getTopichList = () => request.get('/searchList.json')

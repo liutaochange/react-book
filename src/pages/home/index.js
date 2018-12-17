@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Content, ContentLeft, ContentRight, BackTop } from './style.js';
 import List from './component/List.js';
 import Topic from './component/Topic.js';
@@ -6,7 +6,7 @@ import Recommend from './component/Recommend.js';
 import Writer from './component/Writer.js';
 import { connect } from 'react-redux';
 import { actionCreate } from './store/index.js';
-class Home extends Component {
+class Home extends PureComponent {
   render() {
     const { showScroll } = this.props
     return (

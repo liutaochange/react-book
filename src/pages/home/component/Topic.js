@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { TopicWamp, TopicItem } from '../style.js';
 import { connect } from 'react-redux';
-class Topic extends Component {
+class Topic extends PureComponent {
   render() {
     const { topicList } = this.props
     return (

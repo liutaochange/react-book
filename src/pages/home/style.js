@@ -16,7 +16,7 @@ export const ContentLeft = styled.div`
   }
 `
 export const ContentRight = styled.div`
-  width: 240px;
+  width: 280px;
   float: right;
 `
 
@@ -92,7 +92,8 @@ export const LoadMore = styled.div`
 
 export const RecommendWamp = styled.div`
   width: 280px;
-  margin: 30px 0;
+  margin-bottom: 30px;
+  overflow: hidden;
 `
 
 export const RecommendItem = styled.div`

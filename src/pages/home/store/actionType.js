@@ -1,1 +1,1 @@
-export const GETTOPICLIST = 'get_topic_list'
+export const GETLIST = 'get_list'

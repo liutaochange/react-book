@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { WriteWamp, WriteItem } from '../style.js';
 class Writer extends Component {
   render() {
     return (
-      <div>Writer</div>
+      <WriteWamp>
+        <WriteItem></WriteItem>
+      </WriteWamp>
     )
   }
 }

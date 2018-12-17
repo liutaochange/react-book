@@ -9,7 +9,7 @@ class Topic extends Component {
         {
           topicList.map((item) => {
             return (
-              <TopicItem>
+              <TopicItem key={item.get('id')}>
                 <img className='topicImg' src={item.get('imgUrl')} alt="topic"/>
                 {item.get('title')}
               </TopicItem>
@@ -22,14 +22,7 @@ class Topic extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    topicList: state.get('home').get('topicList')
+    topicList: state.getIn(['home', 'topicList'])
   }
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getTopicList() {
-      dispatch()
-    }
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Topic)
+export default connect(mapStateToProps, null)(Topic)

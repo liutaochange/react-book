@@ -30,3 +30,8 @@ export const getMoreData = () => {
     }) 
   }
 }
+
+export const changeScrollFlag = (flag) => ({
+  type: actionType.CHANGESCROLL,
+  flag
+})

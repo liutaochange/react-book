@@ -4,7 +4,8 @@ import { fromJS  } from 'immutable';
 const defaultState = fromJS({
   topicList: [],
   articleList: [],
-  recommendList: []
+  recommendList: [],
+  showScroll: false
 })
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -17,6 +18,10 @@ export default (state = defaultState, action) => {
     case actionType.GETMORE:
       return state.merge({
         articleList: state.get("articleList").concat(action.data),
+      })
+    case actionType.CHANGESCROLL:
+      return state.merge({
+        showScroll: action.flag
       })
     default: 
       return state

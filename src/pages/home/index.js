@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Content, ContentLeft, ContentRight } from './style.js';
+import { Content, ContentLeft, ContentRight, BackTop } from './style.js';
 import List from './component/List.js';
 import Topic from './component/Topic.js';
 import Recommend from './component/Recommend.js';
@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { actionCreate } from './store/index.js';
 class Home extends Component {
   render() {
+    const { showScroll } = this.props
     return (
       <Content>
         <ContentLeft>
@@ -19,19 +20,45 @@ class Home extends Component {
           <Recommend />
           <Writer />
         </ContentRight>
+        { showScroll ? <BackTop onClick={this.scrollTop}>顶部</BackTop> : null }
       </Content>
     )
   }
-
+  scrollTop() {
+    window.scrollTo({ 
+      top: 0, 
+      behavior: "smooth" 
+    });
+  }
+  bindEvents() {
+    window.addEventListener('scroll', this.props.changeScroll)
+  }
   componentDidMount() {
     this.props.getHomeList()
+    this.bindEvents()
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.props.changeScroll)
+  }
+}
+const mapStateToProps = (state) => {
+  return {
+    showScroll: state.getIn(['home', 'showScroll'])
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     getHomeList() {
       dispatch(actionCreate.getList())
+    },
+    changeScroll() {
+      let top = document.documentElement.scrollTop;
+      if (top > 400) {
+        dispatch(actionCreate.changeScrollFlag(true))
+      } else {
+        dispatch(actionCreate.changeScrollFlag(false))
+      }
     }
   }
 }
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

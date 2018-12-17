@@ -115,3 +115,16 @@ export const WriteWamp = styled.div`
 export const WriteItem = styled.div`
   width: 100%;
 `
+
+export const BackTop = styled.div`
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  right: 20px;
+  bottom: 60px;
+  cursor: pointer;
+`

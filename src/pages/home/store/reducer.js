@@ -9,7 +9,6 @@ const defaultState = fromJS({
 export default (state = defaultState, action) => {
   switch (action.type) {
     case actionType.GETLIST:
-      console.log(action.data.get('topicList'))
       return state.merge({
         topicList: action.data.get('topicList'),
         articleList: action.data.get('articleList'),

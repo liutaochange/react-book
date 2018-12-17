@@ -87,6 +87,7 @@ export const LoadMore = styled.div`
   border-radius: 20px;
   color: #fff;
   margin: 30px auto;
+  cursor: pointer;
 `
 
 export const RecommendWamp = styled.div`
@@ -99,6 +100,7 @@ export const RecommendItem = styled.div`
   height: 50px;
   background: url(${(props) => props.imgUrl}) center center no-repeat;
   background-size: cover;
+  margin-bottom: 20px;
 `
 
 export const WriteWamp = styled.div`

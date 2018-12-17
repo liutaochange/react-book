@@ -78,6 +78,17 @@ export const ListInfo = styled.div`
   }
 `
 
+export const LoadMore = styled.div`
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  text-align: center;
+  background: #a5a5a5;
+  border-radius: 20px;
+  color: #fff;
+  margin: 30px auto;
+`
+
 export const RecommendWamp = styled.div`
   width: 280px;
   margin: 30px 0;

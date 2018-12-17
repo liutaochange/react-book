@@ -17,20 +17,21 @@ class Home extends Component {
         </ContentLeft>
         <ContentRight>
           <Recommend />
+          <Writer />
         </ContentRight>
       </Content>
     )
   }
 
   componentDidMount() {
-    this.props.getTopicList()
+    this.props.getHomeList()
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    getTopicList() {
+    getHomeList() {
       dispatch(actionCreate.getList())
     }
   }
 }
-export default connect(mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Home);

@@ -5,15 +5,17 @@ class Recommend extends Component {
   render() {
     const { recommendList } = this.props
     return (
-      <RecommendWamp>
-        {
-          recommendList.map((item) => {
-            return (
-              <RecommendItem key={item.get('id')} imgUrl={item.get('imgUrl')}></RecommendItem>
-            )
-          })
-        }
-      </RecommendWamp>
+      <div>
+        <RecommendWamp>
+          {
+            recommendList.map((item) => {
+              return (
+                <RecommendItem key={item.get('id')} imgUrl={item.get('imgUrl')}></RecommendItem>
+              )
+            })
+          }
+        </RecommendWamp>
+      </div>
     )
   }
 }

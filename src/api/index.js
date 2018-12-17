@@ -10,3 +10,6 @@ export const getSearchList = () => request.get('/searchList.json')
 
 // 获取首页 展示数据
 export const getHomeList = () => request.get('/home.json')
+
+// 点击加载更多
+export const getMoreList = () => request.get('/homeList.json')

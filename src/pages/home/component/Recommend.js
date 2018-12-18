@@ -5,17 +5,15 @@ class Recommend extends PureComponent {
   render() {
     const { recommendList } = this.props
     return (
-      <div>
-        <RecommendWamp>
-          {
-            recommendList.map((item) => {
-              return (
-                <RecommendItem key={item.get('id')} imgUrl={item.get('imgUrl')}></RecommendItem>
-              )
-            })
-          }
-        </RecommendWamp>
-      </div>
+      <RecommendWamp>
+        {
+          recommendList.map((item) => {
+            return (
+              <RecommendItem key={item.get('id')} imgUrl={item.get('imgUrl')}></RecommendItem>
+            )
+          })
+        }
+      </RecommendWamp>
     )
   }
 }

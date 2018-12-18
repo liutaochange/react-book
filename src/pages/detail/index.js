@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import { actionCreate } from './store/index.js';
 class Detail extends PureComponent {
   render() {
+    const { title, content } = this.props
     return (
       <DetailWamp>
-				<DetailHeader>{this.props.title}</DetailHeader>
+				<DetailHeader>{title}</DetailHeader>
 				<DetailContent 
-					dangerouslySetInnerHTML={{__html: this.props.content}}
+					dangerouslySetInnerHTML={{__html: content}}
 				/>
 			</DetailWamp>
     )

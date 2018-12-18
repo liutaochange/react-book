@@ -7,26 +7,24 @@ class List extends PureComponent {
   render() {
     const { articleList, getMoreList } = this.props
     return (
-      <div>
-        <ListWamp>
-          {
-            articleList.map((item) => {
-              return (
-                <Link key={item.get('id')} to='/detail'>
-                  <ListItem>
-                    <ListInfo>
-                      <h3 className='title'>{item.get('title')}</h3>
-                      <p className='desc'>{item.get('desc')}</p>
-                    </ListInfo>
-                    <img className='pic' src={item.get('imgUrl')} alt=''/>
-                  </ListItem>
-                </Link>
-              )
-            })
-          }
-          <LoadMore onClick={getMoreList}>更多</LoadMore>
-        </ListWamp>
-      </div>
+      <ListWamp>
+        {
+          articleList.map((item) => {
+            return (
+              <Link key={item.get('id')} to='/detail'>
+                <ListItem>
+                  <ListInfo>
+                    <h3 className='title'>{item.get('title')}</h3>
+                    <p className='desc'>{item.get('desc')}</p>
+                  </ListInfo>
+                  <img className='pic' src={item.get('imgUrl')} alt=''/>
+                </ListItem>
+              </Link>
+            )
+          })
+        }
+        <LoadMore onClick={getMoreList}>更多</LoadMore>
+      </ListWamp>
     )
   }
 }

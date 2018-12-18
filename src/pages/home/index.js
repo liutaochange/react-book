@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeScroll() {
       let top = document.documentElement.scrollTop;
-      if (top > 400) {
+      if (top > 100) {
         dispatch(actionCreate.changeScrollFlag(true))
       } else {
         dispatch(actionCreate.changeScrollFlag(false))

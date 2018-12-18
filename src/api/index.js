@@ -13,3 +13,6 @@ export const getHomeList = () => request.get('/home.json')
 
 // 点击加载更多
 export const getMoreList = () => request.get('/homeList.json')
+
+// 获取详情页数据
+export const getDetailData = () => request.get('/detail.json')

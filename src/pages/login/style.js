@@ -7,6 +7,9 @@ export const LoginWrapper = styled.div`
   right:  0;
   bottom: 0;
   z-index: 0;
+  video{
+   display: none;
+  }
 `
 export const LoginWamp = styled.div`
   width: 400px;

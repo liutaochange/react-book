@@ -5,7 +5,6 @@ import { actionCreate } from './store/index.js';
 class Detail extends PureComponent {
   render() {
     const { title, content } = this.props
-    console.log(this.props.match.params.id)
     return (
       <DetailWamp>
 				<DetailHeader>{title}</DetailHeader>

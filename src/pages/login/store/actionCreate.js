@@ -1,15 +1,15 @@
 import * as actionType from './actionType.js';
 import { fromJS  } from 'immutable';
-import { getDetailData } from '@/api/index.js';
-const getDetailAction = (data) => ({
-  type: actionType.GETDETAIL,
+import { userLogin } from '@/api/index.js';
+const userLoginAction = (data) => ({
+  type: actionType.GETUSERLOGIN,
   data: fromJS(data)
 })
 
-export const getDetail = () => {
+export const submitLogin = (user, word) => {
   return (dispatch) => {
-    getDetailData().then((res) => {
-      dispatch(getDetailAction(res.data.data))
+    userLogin(user, word).then((res) => {
+      dispatch(userLoginAction(res.data.data))
     }).catch((error) => {
       console.log(error)
     }) 

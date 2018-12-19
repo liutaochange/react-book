@@ -19,7 +19,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 class Header extends Component {
   render() {
-    const {focused, mouseIn, list, page, handleFocus, handleBlur, handleMouse, handleMouseLeave, handleChangePage, totalPage} = this.props
+    const {focused, mouseIn, list, page, handleFocus, handleBlur, handleMouse, handleMouseLeave, handleChangePage, totalPage, login} = this.props
     const jsList = list.toJS()
     const pageList = []
     if (jsList.length) {
@@ -65,7 +65,7 @@ class Header extends Component {
             <i className={focused ? 'iconfont search focused' : 'search iconfont'}>&#xe60a;</i>
             {searchList}
           </SearchWamp>
-          <NavItem className="right">登录</NavItem>
+          { login ? <NavItem className="right">退出</NavItem> : <Link to="/login"><NavItem className="right">登录</NavItem></Link>}
           <NavItem className="right">
             <i className="iconfont">&#xe636;</i>
           </NavItem>
@@ -89,6 +89,7 @@ const mapStateToProps = (state) =>  {
     list: state.getIn(['header', 'list']),
     page: state.getIn(['header', 'page']),
     totalPage: state.getIn(['header', 'totalPage']),
+    login: state.getIn(['login', 'login']),
   }
 }
 const mapDispatchToProps = (dispatch) => {

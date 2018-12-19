@@ -16,3 +16,6 @@ export const getMoreList = () => request.get('/homeList.json')
 
 // 获取详情页数据
 export const getDetailData = () => request.get('/detail.json')
+
+// 模拟用户登录
+export const userLogin = (user, word) => request.get('/login.json')

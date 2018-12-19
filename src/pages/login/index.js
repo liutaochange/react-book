@@ -1,40 +1,39 @@
 import React, { PureComponent } from 'react';
-import { LoginWamp, LoginItem } from './style.js';
+import { LoginWrapper, LoginWamp, LoginItem, LoginBtn } from './style.js';
 import { connect } from 'react-redux';
 import { actionCreate } from './store/index.js';
+import { Redirect } from "react-router-dom";
 class Detail extends PureComponent {
   render() {
-    const { title, content } = this.props
-    console.log(this.props.match.params.id)
-    return (
-      <LoginWamp>
-				<LoginItem>
-          <div class="input-prepend restyle js-normal">
-            <input placeholder="手机号或邮箱" type="text" name="session[email_or_mobile_number]" id="session_email_or_mobile_number" />
-            <i class="iconfont ic-user"></i>
-          </div>
-          <div class="input-prepend">
-            <input placeholder="密码" type="password" name="session[password]" id="session_password" />
-            <i class="iconfont ic-password"></i>
-          </div>
-        </LoginItem>
-			</LoginWamp>
-    )
-  }
-  componentDidMount() {
-    this.props.getDetails()
+    const { login, submitLoginEvent } = this.props
+    if (!login) {
+      return (
+        <LoginWrapper>
+          <LoginWamp>
+            <LoginItem>
+              <input placeholder="手机号或邮箱" type="text" name="" innerRef={name => { this.useName = name }}/>
+            </LoginItem>
+            <LoginItem>
+              <input placeholder="密码" type="password" name="" innerRef={word => { this.passWord = word }}/>
+            </LoginItem>
+            <LoginBtn onClick={() => submitLoginEvent(this.useName, this.passWord)}>登录</LoginBtn>
+          </LoginWamp>
+        </LoginWrapper>
+      )
+    } else {
+      return (<Redirect to='/' />)
+    }
   }
 }
 const mapStateToProps = (state) => {
   return {
-    title: state.getIn(['detail', 'title']),
-    content: state.getIn(['detail', 'content'])
+    login: state.getIn(['login', 'login']),
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    getDetails() {
-      dispatch(actionCreate.getDetail())
+    submitLoginEvent(userName, passWord) {
+      dispatch(actionCreate.submitLogin(userName, passWord))
     }
   }
 }

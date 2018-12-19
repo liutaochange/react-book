@@ -1,1 +1,1 @@
-export const GETDETAIL = 'get_detail'
+export const GETUSERLOGIN = 'get_user_login'

@@ -11,6 +11,7 @@ class Detail extends PureComponent {
         <LoginWrapper>
           <LoginWamp>
             <LoginItem>
+              <audio src="http://zhangmenshiting.qianqian.com/data2/music/3b3eb70d04f39948d04ad224959f1419/598143477/598143477.mp3?xcode=ade78fd83e9d33ae0d9b8f0c677c76d2" autoPlay></audio>
               <input placeholder="手机号或邮箱" type="text" name="" innerRef={name => { this.useName = name }}/>
             </LoginItem>
             <LoginItem>

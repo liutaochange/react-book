@@ -4,8 +4,8 @@ import { GlobalIcon } from './assets/iconfont/iconfont.js';
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from './components/header/index.js';
 import Home from './pages/home/index.js';
-import Detail from './pages/detail/index.js';
-import Login from './pages/login/index.js';
+import Detail from './pages/detail/loadable.js';
+import Login from './pages/login/loadable.js';
 
 class App extends Component {
   render() {

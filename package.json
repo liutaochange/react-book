@@ -32,6 +32,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "proxy": "http://localhost:6001",
   "devDependencies": {
     "koa": "^2.6.2",
     "koa-server-http-proxy": "^0.1.0",

@@ -11,7 +11,6 @@ let router = new Router();
 // 装载所有子路由
 const list = require('./app/list.js');
 router.use('/list', list.routes(), list.allowedMethods());
-router.use('/page', page.routes(), page.allowedMethods());
 
 // 加载路由中间件
 app.use(router.routes()).use(router.allowedMethods());

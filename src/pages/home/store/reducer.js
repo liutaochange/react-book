@@ -11,9 +11,9 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case actionType.GETLIST:
       return state.merge({
-        topicList: action.data.get('topicList'),
-        articleList: action.data.get('articleList'),
-        recommendList: action.data.get('recommendList')
+        topicList: action.data.get('topicList') || [],
+        articleList: action.data || [],
+        recommendList: action.data.get('recommendList') || []
       })
     case actionType.GETMORE:
       return state.merge({

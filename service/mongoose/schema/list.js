@@ -9,15 +9,11 @@ const listSchema = new Schema({
   slug: String,
   author: {
     slug: String,
-    avatar: String,
-    nickname: String,
-    sharedTime: Date
+    nickname: String
   },
   title: String,
   abstract: String,
   thumbnails: String,
-  collection_tag: String,
-  reads_count: Number,
   comments_count: Number,
   likes_count: Number
 }, {

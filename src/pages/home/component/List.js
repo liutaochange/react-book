@@ -11,13 +11,18 @@ class List extends PureComponent {
         {
           articleList.map((item) => {
             return (
-              <Link key={item.get('id')} to={'/detail/'+ item.get('id')}>
-                <ListItem>
+              <Link key={item.get('id')} to={'/detail/' + item.get('slug')}>
+                <ListItem className={item.get('thumbnails') === "" ? "noImg" : "hasImg"}>
                   <ListInfo>
                     <h3 className='title'>{item.get('title')}</h3>
-                    <p className='desc'>{item.get('desc')}</p>
+                    <p className='desc'>{item.get('abstract')}</p>
+                    <div className="meta">
+                      <span>{item.get('author').get('nickname')}</span>
+                      <span>评论： 18</span>      
+                      <span>喜欢：19</span>
+                    </div>
                   </ListInfo>
-                  <img className='pic' src={item.get('imgUrl')} alt=''/>
+                  <img className='pic' src={item.get('thumbnails')} alt='' />
                 </ListItem>
               </Link>
             )

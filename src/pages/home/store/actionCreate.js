@@ -14,6 +14,7 @@ const getMoreAction = (data) => ({
 export const getList = () => {
   return (dispatch) => {
     getHomeList().then((res) => {
+      console.log(res.data.data)
       dispatch(getListAction(res.data.data))
     }).catch((error) => {
       console.log(error)

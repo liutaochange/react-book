@@ -60,6 +60,11 @@ export const ListItem = styled.div`
     height: 100px;
     display: block;
   }
+  &.noImg{
+    .pic{
+      display: none;
+    }
+  }
 `
 
 export const ListInfo = styled.div`
@@ -75,6 +80,16 @@ export const ListInfo = styled.div`
     line-height: 18px;
     font-size: 13px;
     color: #999;
+  }
+  .meta{
+    padding-top: 16px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    span{
+      margin-right: 10px;
+      color: #b4b4b4;
+    }
   }
 `
 
